@@ -10,3 +10,19 @@
 3. koa 通过 generater 实现异步
 4. koa2 通过 promise/async/await 实现异步
 5. getter/setter
+
+# 网络编程 http
+
+# 持久化 mysql/MongoDB
+
+# koa 实战-鉴权
+
+# eggjs 原理解析-实战
+
+# TS 手写 TS 装饰器
+
+# Docker 自动化部署 nginx/docker
+
+# 微信公众号开发
+
+# 前端安全 常见攻击手段攻防演练
