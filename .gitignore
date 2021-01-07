@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+*.log
+dist/*.gz
+dist/*.map
+dist/*.js
+dist/*.html
+.vscode
