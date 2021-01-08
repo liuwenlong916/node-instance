@@ -26,3 +26,7 @@
 # 微信公众号开发
 
 # 前端安全 常见攻击手段攻防演练
+
+# ssh
+
+1. [linux/github 设置 ssh](https://docs.github.com/cn/free-pro-team@latest/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
