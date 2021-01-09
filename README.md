@@ -9,7 +9,10 @@
 2. http 缺陷
 3. koa 通过 generater 实现异步
 4. koa2 通过 promise/async/await 实现异步
-5. getter/setter
+5. getter/setter 视 ctx 绑定原生 res/req
+6. compose 洋葱圈,整合中间件,中间件执行顺序
+7. router
+8. 静态文件
 
 # 网络编程 http
 
