@@ -2,7 +2,10 @@
 <script>
   (async () => {
     axios.defaults.baseURL = "http://localhost:4000";
-    const res = await axios.get("/api/users");
+    const res = await axios.get("/api/users", {
+      headers: { "X-Token": "jilei" },
+    });
+
     console.log("data ", res.data);
     document.writeln(`Response data:${JSON.stringify(res.data)}`);
   })();

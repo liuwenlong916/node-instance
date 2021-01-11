@@ -1,7 +1,7 @@
-// const koa = require("koa");
-// const static = require("koa-static");
-// const app = new koa();
-// app.use(static(__dirname + "/"));
+const koa = require("koa");
+const static = require("koa-static");
+const app = new koa();
+app.use(static(__dirname + "/"));
 
 //express引入失败？
 // const express = require("express");
