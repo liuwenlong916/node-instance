@@ -11,8 +11,11 @@
 
 const KKB = require("./kkb/kkb");
 const Router = require("./kkb/router");
+const interceptor = require("./kkb/interceptor");
 
 const app = new KKB();
+
+app.use(interceptor);
 
 //1.原生http写法
 // app.use((req, res) => {
