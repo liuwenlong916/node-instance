@@ -1,6 +1,7 @@
 # TCP 协议 即时聊天
 
-使用 net 通讯
+使用 net 通讯,原理：Net 模块提供一个异步 API 能够创建基于流的 TCP 服务器，客户端与服务器建立连接后，服务器可
+以获得一个全双工 Socket 对象，服务器可以保存 Socket 对象列表，在接收某客户端消息时，推送给其他客户端。
 
 ```javascript
 const net = require("net");
@@ -94,9 +95,14 @@ TODO 待补充
 
 ## 第一层封印(端口不一致)
 
+方法一：CORS(Corss Origin Resource Share)-跨域资源共享，后端方案
+
 1. 指定 axios 访问域名: axios.defaults.baseURL = 'http://localhost:4000'
 2. 后端允许返回设置 head:res.setHeader('Access-Control-Allow-Origin',''http://localhost:3000)
 3. 协议(http/https)、url、端口缺一不可
+
+方法二：JSONP,前端构造 script 标签请求指定 URL(script 发出的 get 请求不受同源策略影响)JQuery.getJSON 同样不受同源策略影响
+方法三：代理服务器
 
 ## 第二层封印(预检请求，option 请求)
 
