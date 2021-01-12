@@ -9,13 +9,13 @@ const chatServer = net.createServer();
 
 const clientList = [];
 
-chatServer.on("connection", (client) => {
+chatServer.on("connection", client => {
   client.write("Hi ");
   clientList.push(client);
   //接收到消息
-  client.on("data", (data) => {
+  client.on("data", data => {
     console.log("receive:", data.toString());
-    clientList.forEach((client) => {
+    clientList.forEach(client => {
       client.write(data);
     });
   });
@@ -122,3 +122,39 @@ if (method === "options" && url === "/api/users") {
   res.end();
 }
 ```
+
+## 第三层封印(设置 cookie)
+
+## Proxy 代理
+
+设置代理后，之前设置都不再需要
+默认使用代理，不使用跨域
+
+```javascript
+const proxy = require("http-proxy-middleware");
+//当请求/api开头时，代理到localhost:4000地址
+app.use(
+  "/api",
+  proxy({
+    target: "http://localhost:4000",
+    changeOrigin: false,
+  }),
+);
+```
+
+# 反向代理
+
+## 之前上网正向代理：
+
+client->PC 代理软件->电话线->server
+会缓存到代理软件，加快速度
+
+## 路由器反向代理
+
+client->路由器-> 5G-> 代理服务器->server-N 集群、分布式
+
+# body-parser
+
+form 表单 post 请求,把 buffer 流转为 json
+
+# http 缓存
