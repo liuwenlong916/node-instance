@@ -37,4 +37,20 @@ rl.on("close", function () {
 
 # mysql
 
-TODO->Dock 之后补写
+TODO->Dock 之后补写,docker 下安装 mysql
+
+## 关系型数据库
+
+1. mysql/mysql2 执行 sql 语句
+
+## Node.js ORM(Object Relation Mapping) Sequelize
+
+1. 中间件
+2. 建立模型
+3. 模型同步到数据库
+
+## uuid
+
+备份数据库，原数据库清空并重新写入，备份数据库还原时，主键就可能冲突
+
+## 实战电商数据结构
