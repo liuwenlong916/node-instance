@@ -16,6 +16,7 @@ const SESS_CONFIG = {
   maxAge: 60 * 60 * 24 * 1000,
   httpOnly: true,
   signed: true,
+  //如果不设置store，kkb:sess.sig,会保存一个json,数据同时会持久化
   store: redisStore({ client }), //设置session时会写入redis里
 };
 

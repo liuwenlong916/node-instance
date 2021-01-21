@@ -45,3 +45,16 @@ app.listen(3000);
 - 雪崩效应
 
 # redis
+
+# token
+
+1. session 需要服务器有状态
+2. app/跨域不灵活
+
+# jwt
+
+1. 三部分组成：令牌头,payload,哈希
+2. 第三部分是由前两部分+secret 加密而来的。
+   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9. {"alg":"HS256","typ":"JWT"}
+   eyJkYXRhIjoidGVzdCIsImV4cCI6MTYxMTE5ODY0NiwiaWF0IjoxNjExMTk1MDQ2fQ.{"data":"test","exp":1611198646,"iat":1611195046}
+   5cDp4Ppf0CuhGqV1DUPdi-g0v31LdyEzuirkXMq6UqI
