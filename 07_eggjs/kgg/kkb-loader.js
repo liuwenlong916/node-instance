@@ -30,18 +30,66 @@ function initRouter(app) {
       console.log(`正在映射: ${method} ${prefix + path}`);
 
       //router.get('/user',async ctx=>{...})
-      router[method](prefix + path, routes[key]);
+      // router[method](prefix + path, routes[key]);
+      router[method](prefix + path, async ctx => {
+        app.ctx = ctx;
+        await routes[key](app);
+      });
     });
   });
   return router;
 }
 
-function initController() {
+function initController(app) {
   const controllers = {};
   load("controller", (filename, controller) => {
+    controller = typeof controller == "function" ? controller(app) : controller;
     controllers[filename] = controller;
   });
   return controllers;
 }
 
-module.exports = { initRouter, initController };
+function initService(app) {
+  const services = {};
+  load("service", (fileName, service) => {
+    service = typeof service == "function" ? service(app) : service;
+    services[fileName] = service;
+  });
+  return services;
+}
+
+const Sequelize = require("sequelize");
+function loadConfig(app) {
+  load("config", (fileName, conf) => {
+    if (conf.db) {
+      app.$db = new Sequelize(conf.db);
+      app.$model = {};
+      load("model", (fileName, { schema, options }) => {
+        app.$model[fileName] = app.$db.define(fileName, schema, options);
+      });
+
+      app.$db.sync();
+    }
+    if (conf.middleware) {
+      conf.middleware.forEach(mid => {
+        const midPath = path.resolve(__dirname, "middleware", mid);
+        app.$app.use(require(midPath));
+      });
+    }
+  });
+}
+
+const schedule = require("node-schedule");
+function initSchedule() {
+  load("schedule", (fileName, { interval, handler }) => {
+    schedule.scheduleJob(interval, handler);
+  });
+}
+
+module.exports = {
+  initRouter,
+  initController,
+  initService,
+  loadConfig,
+  initSchedule,
+};
