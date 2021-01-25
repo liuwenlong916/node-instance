@@ -1,5 +1,5 @@
 "use strict";
-
+//注册插件
 /** @type Egg.EggPlugin */
 module.exports = {
   // had enabled by egg
@@ -9,5 +9,9 @@ module.exports = {
   swaggerdoc: {
     enable: true,
     package: "egg-swagger-doc-feat",
+  },
+  validate: {
+    enable: true,
+    package: "egg-validate",
   },
 };

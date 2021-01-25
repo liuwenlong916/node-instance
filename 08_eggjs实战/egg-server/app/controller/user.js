@@ -17,6 +17,7 @@ class userController extends Controller {
    */
   async create() {
     const { ctx } = this;
+    ctx.validate(ctx.rule.createUserRequest); //校验规则与doc格式一致
     // aa();//错误代码
     // ctx.body = "user ctrl";
     ctx.helper.success({ ctx, res: { abc: 123 } });

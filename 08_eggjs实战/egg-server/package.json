@@ -10,6 +10,7 @@
     "egg": "^2.15.1",
     "egg-scripts": "^2.11.0",
     "egg-swagger-doc-feat": "^2.2.14",
+    "egg-validate": "^2.0.2",
     "moment": "^2.29.1"
   },
   "devDependencies": {
