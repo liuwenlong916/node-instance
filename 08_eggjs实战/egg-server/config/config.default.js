@@ -18,6 +18,28 @@ module.exports = appInfo => {
   // add your middleware config here
   //错误统一处理方式一:中间件
   config.middleware = ["errorHandler"];
+  // //错误统一处理方法二
+  // config.onerror = {
+  //   all(err, ctx) {
+  //     // 所有的异常都在 app 上触发一个 error 事件，框架会记录一条错误日志
+  //     ctx.app.emit("error", err, this);
+  //     const status = err.status || 500;
+  //     // 生产环境时 500 错误的详细错误内容不返回给客户端，因为可能包含敏感信息
+  //     const error =
+  //       status === 500 && ctx.app.config.env === "prod"
+  //         ? "Internal Server Error"
+  //         : err.message;
+  //     // 从 error 对象上读出各个属性，设置到响应中
+  //     ctx.body = {
+  //       code: status, // 服务端自身的处理逻辑错误(包含框架错误500 及 自定义业务逻辑错误533开始 ) 客户端请求参数导致的错误(4xx开始)，设置不同的状态码
+  //       error: error,
+  //     };
+  //     if (status === 422) {
+  //       ctx.body.detail = err.errors;
+  //     }
+  //     ctx.status = 200;
+  //   },
+  // };
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -46,28 +68,15 @@ module.exports = appInfo => {
       bufferMaxEntries: 0,
     },
   };
-  // //错误统一处理方法二
-  // config.onerror = {
-  //   all(err, ctx) {
-  //     // 所有的异常都在 app 上触发一个 error 事件，框架会记录一条错误日志
-  //     ctx.app.emit("error", err, this);
-  //     const status = err.status || 500;
-  //     // 生产环境时 500 错误的详细错误内容不返回给客户端，因为可能包含敏感信息
-  //     const error =
-  //       status === 500 && ctx.app.config.env === "prod"
-  //         ? "Internal Server Error"
-  //         : err.message;
-  //     // 从 error 对象上读出各个属性，设置到响应中
-  //     ctx.body = {
-  //       code: status, // 服务端自身的处理逻辑错误(包含框架错误500 及 自定义业务逻辑错误533开始 ) 客户端请求参数导致的错误(4xx开始)，设置不同的状态码
-  //       error: error,
-  //     };
-  //     if (status === 422) {
-  //       ctx.body.detail = err.errors;
-  //     }
-  //     ctx.status = 200;
-  //   },
-  // };
+  config.jwt = {
+    secret: "Great4-M",
+    enable: true, // default is false
+    match: /^\/api/, // optional那些路径需要鉴权
+    // /api/xxx需要鉴权
+    // login logout 不需要
+    //请求地址改为 /auth/login和auth/logout
+    // /public/xxx 公共接口不需要
+  };
 
   return {
     ...config,
