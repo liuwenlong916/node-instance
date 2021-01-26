@@ -16,8 +16,8 @@ module.exports = appInfo => {
   config.keys = appInfo.name + "_1611542775684_1001";
 
   // add your middleware config here
+  //错误统一处理方式一:中间件
   config.middleware = ["errorHandler"];
-
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
@@ -36,6 +36,15 @@ module.exports = appInfo => {
     // enableValidate: true,
     routerMap: true, //自动加载路由，更新文件router.js
     enable: true,
+  };
+
+  config.mongoose = {
+    url: "mongodb://localhost:27017/egg_x",
+    options: {
+      autoReconnect: true,
+      reconnectTries: Number.MAX_VALUE,
+      bufferMaxEntries: 0,
+    },
   };
   // //错误统一处理方法二
   // config.onerror = {

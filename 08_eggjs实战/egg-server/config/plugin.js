@@ -14,4 +14,12 @@ module.exports = {
     enable: true,
     package: "egg-validate",
   },
+  mongoose: {
+    enable: true,
+    package: "egg-mongoose",
+  },
+  bcrypt: {
+    enable: true,
+    package: "egg-bcrypt",
+  },
 };

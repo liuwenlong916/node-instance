@@ -16,11 +16,16 @@ class userController extends Controller {
    * @response 200 baseResponse 创建成功
    */
   async create() {
-    const { ctx } = this;
+    const { ctx, service } = this;
     ctx.validate(ctx.rule.createUserRequest); //校验规则与doc格式一致
     // aa();//错误代码
     // ctx.body = "user ctrl";
-    ctx.helper.success({ ctx, res: { abc: 123 } });
+
+    // const res = { abc: 123 };
+
+    const payload = ctx.request.body || {};
+    const res = await service.user.create(payload);
+    ctx.helper.success({ ctx, res });
   }
 }
 
