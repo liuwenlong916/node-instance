@@ -24,6 +24,10 @@
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-static": "^5.0.0",
-    "koa-xtime": "^1.0.0"
+    "koa-xtime": "^1.0.0",
+    "mysql2": "^2.2.5",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.5.0",
+    "sequelize-typescript": "^2.0.0"
   }
 }
