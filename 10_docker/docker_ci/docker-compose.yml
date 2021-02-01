@@ -1,0 +1,24 @@
+version: "3.1"
+services:
+  nginx:
+    restart: always
+    image: nginx
+    ports:
+      - 8091:80
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+      - ./frontend/dist:/var/www/html/
+      - ./static/:/static/
+  app-pm2:
+    #域名 http://app-pm2:3000
+    container_name: app-pm2
+    #构建容器
+    #backend目录下执行 docker build,执行Dockerfile,启动PM2
+    build: ./backend
+    ports:
+      - "3000:3000"
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
