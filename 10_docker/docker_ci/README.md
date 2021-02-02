@@ -52,7 +52,7 @@ server {
 
 ```
 
-# 2.配置 docker-compose
+# 2.配置 docker-compose,启动nginx(docker run )
 
 目录:docker-compose.yml
 
@@ -62,15 +62,17 @@ services:
   nginx:
     restart: always
     image: nginx
+    # docker run -p
     ports:
       - 8091:80
+    # docker run -v 
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d
       - ./frontend/dist:/var/www/html/
       - ./static/:/static/
 ```
 
-# 3.配置 pm2
+# 3.配置 pm2(node)
 
 目录:backend/process.yml
 
@@ -91,7 +93,7 @@ apps:
 node_modules;
 ```
 
-# 5.配置 docker build 定制镜像
+# 5.配置 docker build 定制pm2镜像
 
 目录:backend/Dockerfile
 
@@ -133,7 +135,7 @@ location /api {
 }
 ```
 
-# 8.配置 docker-compose 后端镜像
+# 8.配置 docker-compose (启动pm2 和mongo)
 
 目录:docker-compose.yml
 
