@@ -41,13 +41,7 @@ server {
     root /static;
     index index.html index.htm;
   }
-  location /api {
-    proxy_pass http://app-pm2:3000;
-    proxy_redirect off;
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-  }
+  #代理后端接口待完善
 }
 
 ```
