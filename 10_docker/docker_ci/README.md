@@ -138,7 +138,7 @@ location /api {
 目录:docker-compose.yml
 
 ```javascript
-app-pm2:
+  app-pm2:
     #域名 http://app-pm2:3000
     container_name: app-pm2
     #构建容器
