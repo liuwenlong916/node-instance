@@ -95,6 +95,7 @@ node_modules;
 FROM keymetrics/pm2:latest-alpine
 WORKDIR /usr/src/app
 ADD . /usr/src/app
+# docker启动 pm2 自动下载依赖
 RUN npm config set registry https://registry.npm.taobao.org/ && \
     npm i
 # RUN npm i
