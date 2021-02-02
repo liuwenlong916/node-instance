@@ -79,7 +79,7 @@ apps:
       NODE_ENV: production
 ```
 
-# 4.忽略文件
+# 4.忽略文件(启动pm2，映射文件，忽略的文件/夹)
 
 目录:backend/.dockerignore
 
