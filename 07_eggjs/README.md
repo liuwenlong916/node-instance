@@ -1,6 +1,6 @@
 # eggjs 四层结构
 
-egg-init egg --type=simple
+egg-init egg --type=simple 或者
 npm init egg --type=simple
 
 ## router.js
